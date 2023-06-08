@@ -1,5 +1,4 @@
 import React from 'react'
-import Edittodo from './Edittodo'
 
 export default function Todos({ todo, index, delfunc, toggleTodo,editTodo}) {
   return (
@@ -16,6 +15,7 @@ export default function Todos({ todo, index, delfunc, toggleTodo,editTodo}) {
           onClick={()=>{
             editTodo(index)
           }}>edit_note</span>
+        
           <span className="material-symbols-outlined dlt-icon"
             onClick={() => {
               delfunc(index)

@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useState, forwardRef} from 'react'
+import swal from 'sweetalert';
 
-export default function Edittodo({editTodoadd,index}) {
+function Edittodo({editTodoadd,index},input) {
     const[todo,setTodo]=useState("");
-    const input=useRef();
   return (
     <div className='todoform editForm'>
     <input 
@@ -13,10 +13,20 @@ export default function Edittodo({editTodoadd,index}) {
     onChange={(e)=>{setTodo(e.target.value)}}/>
       
     <button className='btn' onClick={()=>{
+      if(todo===""){
+        swal({
+          title: "Please fill a work for updating",
+          icon: "warning",
+          button: "Ok"
+        });
+      }
+      else{
         editTodoadd(todo,index); 
         setTodo("");
-        input.current.focus();
+      }
     }}>Update</button>
     </div>
   )
 }
+
+export default forwardRef(Edittodo);

@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Todoform from './Todoform'
 import Todos from './Todos'
 import Edittodo from './Edittodo';
 
 export default function Todowrapper() {
   const [todos, setTodos] = useState([]);
+  const inputRef =useRef(null);
 
   const addTodo = (todo) => {
     setTodos([
@@ -23,6 +24,7 @@ export default function Todowrapper() {
     setTodos(todos.map((todo, index) =>
       index === key ? { ...todo, edittodo: !todo.edittodo } : todo
     ))
+    console.log(inputRef.current); 
   }
   const editTodoadd =(todo,key)=>{
     setTodos(todos.map((value,index)=>index===key?
@@ -35,7 +37,7 @@ export default function Todowrapper() {
       {
         todos.map((todo, index) => {
           if (todo.edittodo) {
-              return <Edittodo editTodoadd={editTodoadd} index={index}/>
+              return <Edittodo  ref={inputRef} editTodoadd={editTodoadd} index={index} key={index}/>
           }
           else {
             return <Todos todo={todo} index={index} key={index} delfunc={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
