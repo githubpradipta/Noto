@@ -5,7 +5,7 @@ import Edittodo from './Edittodo';
 
 export default function Todowrapper() {
   const [todos, setTodos] = useState([]);
-  const inputRef =useRef(null);
+  const inputRef = useRef(null);
 
   const addTodo = (todo) => {
     setTodos([
@@ -24,30 +24,43 @@ export default function Todowrapper() {
     setTodos(todos.map((todo, index) =>
       index === key ? { ...todo, edittodo: !todo.edittodo } : todo
     ))
-    console.log(inputRef.current); 
   }
-  const editTodoadd =(todo,key)=>{
-    setTodos(todos.map((value,index)=>index===key?
-    {...value,task:todo,edittodo:!value.edittodo}:value))
+  const editTodoadd = (todo, key) => {
+    setTodos(todos.map((value, index) => index === key ?
+      { ...value, task: todo, edittodo: !value.edittodo } : value))
   }
-  return (
-    <div className='todowarpper'>
-      <h1>List your Works!</h1>
-      <Todoform addTodo={addTodo} />
-      {
-        todos.map((todo, index) => {
-          if (todo.edittodo) {
-              return <Edittodo  ref={inputRef} editTodoadd={editTodoadd} index={index} key={index}/>
-          }
-          else {
-            return <Todos todo={todo} index={index} key={index} delfunc={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
-          }
+  if (todos.length !== 0) {
+    return (
+      <div className='todowarpper'>
+        <h1>List your Works!</h1>
+        <Todoform addTodo={addTodo} />
+        {
+          todos.map((todo, index) => {
+            if (todo.edittodo) {
+              return <Edittodo editTodoadd={editTodoadd} index={index} key={index} ref={inputRef} />
+            }
+            else {
+              return <Todos todo={todo} index={index} key={index} delfunc={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
+            }
 
 
 
-        })
-      }
+          })
+        }
 
-    </div>
-  )
+      </div>
+    )
+  }
+  else{
+    return (
+      <div className='todowarpper'>
+        <h1>List your Works!</h1>
+        <Todoform addTodo={addTodo} />
+        <p>You have no works to do</p>
+  
+      </div>
+    )
+  }
+
+
 }

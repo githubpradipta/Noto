@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap');
+/* *{
+  font-family: 'Jost', sans-serif !important;
+} */
 .App {
   display: flex;
   flex-direction: column;
@@ -17,18 +21,26 @@
   flex-direction: column;
   align-items: center;
 }
+.todowarpper p{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Jost', sans-serif;
+}
 .todowarpper h1{
   font-size: 25px;
   color: #fff;;
   margin-top: 0px;
+  font-family: 'Jost', sans-serif;
 }
 .todoform input{
   width: 210px;
-  padding: 8px 15px;
+  padding: 6px 15px;
   border: 2px solid rgb(125, 1, 219);
   outline: none;
   background: transparent;
   color: #fff;
+  font-family: 'Jost', sans-serif;
 }
 .todoform input::placeholder{
   color: #747373;
@@ -61,6 +73,7 @@
 .todos p{
   padding: 8px;
   margin: 0px;
+  font-family: 'Jost', sans-serif;
 }
 .todos p:hover{
   cursor: pointer;

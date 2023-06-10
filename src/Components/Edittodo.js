@@ -1,7 +1,7 @@
 import React, { useState, forwardRef} from 'react'
 import swal from 'sweetalert';
 
-function Edittodo({editTodoadd,index},input) {
+function Edittodo(props,input) {
     const[todo,setTodo]=useState("");
   return (
     <div className='todoform editForm'>
@@ -21,7 +21,7 @@ function Edittodo({editTodoadd,index},input) {
         });
       }
       else{
-        editTodoadd(todo,index); 
+        props.editTodoadd(todo,props.index); 
         setTodo("");
       }
     }}>Update</button>
